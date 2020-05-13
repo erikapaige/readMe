@@ -1,5 +1,13 @@
-//npm 'inquirer' package, allows for use of prompt
+//bring in npm 'inquirer' package, allows for use of prompt
 const { prompt } = require('inquirer')
+//bring in file system
+const { writeFile, appendFile } = require('fs')
+const { promisfy } = require('util')
+//bring in npm 'axios' package
+const axios = require('axios')
+
+//bring over api code
+// let api = require ('./api')
 
 //array of information looking for
 const questions = ['Project Title:', 'Description:', 'Table of Contents:', 'Installation:', 'Usage:', 'License:', 'Contributing:', 'Tests:', 'Questions:']
