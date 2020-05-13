@@ -1,4 +1,4 @@
-//adding npm 'inquirer' package, allows for prompt
+//npm 'inquirer' package, allows for use of prompt
 const { prompt } = require('inquirer')
 
 //array of information looking for
