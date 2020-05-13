@@ -6,7 +6,7 @@ const axios = require('axios')
 //create a varaible to set equal to API data
 // const api = {
   
-  //prompt user for username
+//prompt user for username
   prompt([
     {
       type: 'input',
@@ -23,7 +23,8 @@ const axios = require('axios')
         //using key data, write axios request for user profile from GitHub
         axios.get(`https://api.github.com/users/${userProfile[name]}`)
           .then(data => {
-            console.log(data)
+            //make it into a variable
+            console.log(data.data.avatar_url)
             //need to pull in their github image
             // axios.get(`https://api.github.com/users/avatar_url`)
             //   .then(data => {
@@ -34,6 +35,6 @@ const axios = require('axios')
       }
     })
       .catch(err => console.log(err))
-}
+
 
 // module.exports = api
