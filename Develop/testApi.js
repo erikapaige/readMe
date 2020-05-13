@@ -12,25 +12,22 @@ prompt([
     message: 'GitHub Username:'
   }
 ])
-  .then(data => {
-    console.log(data)
-    //loop over different properties of an object to get to key
-    for(const key in data) {
-        //return the value of data at the key (userProfile)
-        console.log(data[key])
+  .then(userProfile => {
+    console.log(userProfile)
+    //loop over different properties of an object to get to userProfile (key)
+    for (const name in userProfile) {
+      //return the value of data at the userProfile (key)
+      console.log(name[userProfile])
         //using key data, write axios request for user profile from GitHub
-        axios.get(`https://api.github.com/users/${data[key]}`)
+      axios.get(`https://api.github.com/users/${userProfile[name]}`)
           .then(data => {
             console.log(data)
+            // axios.get(`https://api.github.com/users/avatar_url`)
+            //   .then(data => {
+            //     console.log
+            //   })
           })
           .catch(err => console.log(err))
     }
   })
   .catch(err => console.log(err))
-
-//reqeust to get data infor from github
-// axios.get(`https://api.github.com/users/:username`)
-//   .then(data => {
-//     console.log(data)
-//   })
-//   .catch(err => console.log(err))

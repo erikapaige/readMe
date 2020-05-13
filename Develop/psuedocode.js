@@ -3,10 +3,10 @@
 //2 upon command - node index.js - will prompt user to fill out info
 //3 prompted for github username
     //3a add require inquirer for prompt command
-    //3b set prompt equal to a varialbe
-    //3c add Axios from npm
-    //3d Write AJAX request to GitHub API
-    //3e pull out of object the username and image
+    //3b add Axios from npm
+    //3c write propmt with object key asking for username
+    //3d write axios request to save username and goto API
+    //3e write 2nd axios request to get image
 //4 once step 3 is complete user prompted with questions
   //install npm inqurier to make 'propmt' work
     //4a create a prompt array
