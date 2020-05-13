@@ -3,12 +3,23 @@ const { prompt } = require('inquirer')
 //npm 'axios' package
 const axios = require('axios')
 
+//creating variables to call specific data in api key
+// let userEmail = email () => {
+//   axios.get(`https://api.github.com/users/${userProfile[data.email]}`)
+//     .then(data => {
+//       console.log
+//     })
+//     .catch(err => console.log(err))
+// }
 
+//create a varaible to set equal to API data
+// const api = {
+// getUser(username){
 //prompt user for username
 prompt([
   {
-    type:'input',
-    name:'userProfile',
+    type: 'input',
+    name: 'userProfile',
     message: 'GitHub Username:'
   }
 ])
@@ -18,16 +29,22 @@ prompt([
     for (const name in userProfile) {
       //return the value of data at the userProfile (key)
       console.log(name[userProfile])
-        //using key data, write axios request for user profile from GitHub
+      //using key data, write axios request for user profile from GitHub
       axios.get(`https://api.github.com/users/${userProfile[name]}`)
-          .then(data => {
-            console.log(data)
-            // axios.get(`https://api.github.com/users/avatar_url`)
-            //   .then(data => {
-            //     console.log
-            //   })
-          })
-          .catch(err => console.log(err))
+        .then(data => {
+          //make it into a variable
+          console.log(data)
+          //need to pull in their github image
+          // axios.get(`https://api.github.com/users/${userProfile[data.email]}`)
+          //   .then(data => {
+          //     console.log
+          //   })
+          // .catch(err => console.log(err))
+        })
+        .catch(err => console.log(err))
     }
   })
   .catch(err => console.log(err))
+    // }
+
+// module.exports = api
