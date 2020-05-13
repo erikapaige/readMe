@@ -7,6 +7,7 @@
     //3c Write AJAX request to GitHub API
     //3d pull out of object the username and image
 //4 once step 3 is complete user prompted with questions
+  //install npm inqurier to make 'propmt' work
     //4a create a prompt array
     //4b each question is an object
         // {
