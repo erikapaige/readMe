@@ -50,7 +50,7 @@ prompt([
   },
   {
     type: 'list',
-    name: 'contributting',
+    name: 'contributing',
     message: 'List of contributors:',
     choices: [
       {
@@ -105,7 +105,7 @@ function generateMarkdown({ data }) {
 
 ## ${data.description}
 ## ${data.tbc}
-## ${data.contributting}
+## ${data.contributing}
 ## ${data.test}
 ## ${data.question}
 
