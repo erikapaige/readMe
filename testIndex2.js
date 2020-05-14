@@ -2,14 +2,16 @@ const { promisfy } = require('util')
 //bring in npm 'inquirer' package, allows for use of prompt
 const { prompt } = require('inquirer')
 //bring in file system
-const { writeFile, appendFile} = require ('fs')
+const { writeFile, appendFile } = require('fs')
 
 //bring over api code
-const api = require ('./testApi2.js')
+const api = require('./testApi2.js')
+//bring over markdown
+const generateMarkdown = require('./generateMarkdown')
 
 
 // array of information looking for
-const questions = ['Project Title:', 'Description:', 'Table of Contents:', 'Installation:', 'Usage:', 'License:', 'Contributing:', 'Tests:', 'Questions:']
+const questions = ['Title:', 'Description:', 'Installation:', 'Usage:', 'License:', 'Contributing:', 'Tests:', 'Questions:', 'GitHub:']
 
 // creating empty array with answers from for questions
 let answers = []
@@ -26,35 +28,32 @@ for (let i = 0; i < questions.length; i++) {
 prompt(answers)
   //log the data
   .then(response => {
-    api()
-    .then(data => {
-      generateMarkdown(response, data)
-    })
-    // console.log(data)
-  })
+    console.log(response)
+      api.getUser(response.GitHub).then(data => {
+        console.log(response.GitHub)
+        // writeFile("README.md", generateMarkdown({response, data}))
+      })
   .catch(err => console.log(err))
+  })
 
-// let generateMarkdown = require ('./generateMarkdown')
+// writeToFile("README.md", generateMarkdown(response, data)
 
-// function generateMarkdown({ data }) {
+  
+
 //   return `
-// # **${data.title}**
-
-// ## ${data.description}
-// ## ${data.tbc}
-// ## ${data.contributing}
-// ## ${data.test}
-// ## ${data.question}
+// # ** ${ response.Title }**
+//     ---
+// ## ${ response.Description }
+// ## ${ response.Installation }
+// ## ${ response.Usage }
+// ## ${ response.License }
+// ## ${ response.Contributing }
+// ## ${ response.Tests }
+// ## ${ response.Questions }
+// ---
+//   ${ data.name }
 
 // ![profilepic](https://avatars1.githubusercontent.com/u/62491401?v=4${userProfile[avatar_url]})
 // `
 // }
 
-// function writeToFile(fileName, data) {
-// }
-
-// function init() {
-
-// }
-
-// init();
