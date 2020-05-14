@@ -6,8 +6,8 @@ const { writeFile, appendFile} = require ('fs')
 
 
 //establishing values for promisify
-const writeFilePromise = promisify(writeFile)
-const appendFilePromise = promisify(appendFile)
+// const writeFilePromise = promisify(writeFile)
+// const appendFilePromise = promisify(appendFile)
 
 
 //bring over api code
@@ -33,6 +33,7 @@ prompt(answers)
   //log the data
   .then(data => {
     console.log(data)
+
   })
   .catch(err => console.log(err))
 

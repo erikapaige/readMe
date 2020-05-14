@@ -8,7 +8,7 @@
     //3d write axios request to save username and goto API
     //3e write 2nd axios request to get image
 //4 once step 3 is complete user prompted with questions
-  //install npm inqurier to make 'propmt' work
+  //install npm inqurier to make 'prompt' work
     //4a create a prompt array
     //4b each question is an object
         // {
@@ -23,6 +23,22 @@
     //4d add catch err
         //   .catch(err => console.log(err))
     //4e using info from directions write an array of questions
-    //4f use for loop to pus answers into object
-    //prompt users for answers log the data
+   
 //5 going to append file, make sure it is a .md (for readme)
+
+how to re-structure from tutor
+// let data = {}
+// /// inq name
+// //    then 
+// let githubdata = API.getuser(anwswer.name)
+
+            // inq for the rest of the questions   responses
+
+
+                    /// axios for theapidata from github with the data.username
+                    /// githubInfo
+
+                        ///  data={...githubInfo, ...responses}
+
+                          //// you call your generate (data)
+                                  // you call write file (filename, generateMarkdown(myinfoalltogether))
