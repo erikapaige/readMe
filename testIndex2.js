@@ -4,7 +4,6 @@ const { prompt } = require('inquirer')
 //bring in file system
 const { writeFile, appendFile} = require ('fs')
 
-
 //bring over api code
 const api = require ('./testApi2.js')
 
