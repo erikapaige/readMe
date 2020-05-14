@@ -13,7 +13,7 @@ const axios = require('axios')
 // }
 
 //prompt user for username
-    prompt([
+  prompt([
       {
         type: 'input',
         name: 'userProfile',
@@ -28,9 +28,9 @@ const axios = require('axios')
           console.log(name[userProfile])
           //using key data, write axios request for user profile from GitHub
           axios.get(`https://api.github.com/users/${userProfile[name]}`)
-            .then(data => {
+            .then(({data}) => {
               //consologing the data from the axios request
-              console.log(data.data)
+              console.log(data)
               //need to pull in their github image
               // axios.get(`https://api.github.com/users/${userProfile[data.email]}`)
               //   .then(data => {

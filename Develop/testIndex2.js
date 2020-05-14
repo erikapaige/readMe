@@ -33,6 +33,7 @@ prompt(answers)
   })
   .catch(err => console.log(err))
 
+
 // function writeToFile(fileName, data) {
 // }
 
