@@ -1,4 +1,4 @@
-const { promisfy } = require('util')
+const { promisify } = require('util')
 //bring in npm 'inquirer' package, allows for use of prompt
 const { prompt } = require('inquirer')
 //bring in file system
@@ -6,8 +6,10 @@ const { writeFile, appendFile } = require('fs')
 //npm 'axios' package
 const axios = require('axios')
 //establishing values for promisify
-// const appendFileSync = promisify (writeFile)
-// const writeFileSync  = promisify (appendFile)
+const appendFileSync = promisify (writeFile)
+
+//creating variables to be called on to generate the ReadMe
+const userProfile =''
 
 //prompt asking user for GitHub username
 prompt([
@@ -37,7 +39,7 @@ prompt([
   })
   .catch(err => console.log(err))
 
-//an array of objects with prompts for user information about the project
+// //an array of objects with prompts for user information about the project
 prompt([
   {
     type: 'input',
@@ -101,3 +103,19 @@ prompt([
     message: 'List any remaining questions or comments:'
   }
 ])
+
+//creating and formatting the readme file
+function generateMarkdown({ data }) {
+  return `
+# **${data.title}**
+
+## ${data.description}
+## ${data.tbc}
+## ${data.contributting}
+## ${data.test}
+## ${data.question}
+
+![profilepic](https://avatars1.githubusercontent.com/u/62491401?v=4${userProfile[avatar_url]})
+`
+}
+
