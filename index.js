@@ -96,10 +96,12 @@ prompt([
   //catch error from original .then statment
   .catch(err => console.log(err))
 
+let api = ('./api.js')
+let markdown = ('./generateMarkdown.js')
+
 function writeToFile ('readme.md', data, err =>
   if (err) {
     console.log(err)
   }
   .then
-  
   )
