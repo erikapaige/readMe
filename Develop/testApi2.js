@@ -33,19 +33,15 @@ const axios = require('axios')
           axios.get(`https://api.github.com/users/${userProfile[name]}`)
             //using {} around data to deconstruct the object
             .then(({data}) => {
-              //console logging the data from the axios request
-              console.log(data)
-              //need to pull in their github image
-              axios.get(`https://api.github.com/users/${userProfile[data.avatar_url]}`)
-                .then(data => {
-                  console.log(`${ userProfile[data.avatar_url]}`)
-                })
-              .catch(err => console.log(err))
+              //from axios request pull avatar_url
+              console.log(data.avatar_url)
+              //from the axios request pull user's email
+              console.log(data.email)
             })
             .catch(err => console.log(err))
-        }
+            }
       })
-        .catch(err => console.log(err))
+      .catch(err => console.log(err))
 
 
 // module.exports = api
