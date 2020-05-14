@@ -4,6 +4,10 @@ const { prompt } = require('inquirer')
 //bring in file system
 const { writeFile, appendFile } = require('fs')
 
+//establishing values for promisify
+const writeFilePromise = promisify (writeFile)
+const appendFilePromise = promisify (appendFile)
+
 
 //function writeToFile(fileName, data) {
 // an array of objects with prompts for user information about the project
@@ -24,11 +28,11 @@ prompt([
     message: 'Description of the project:'
   },
   {
-    type: 'input',
+    type: 'list',
     name: 'tbc',
     message: 'Table of Contents:'
     choices: [
-      new seperator (,)
+      new seperator (),
       {
         name: 'Installation'
       },
@@ -36,51 +40,39 @@ prompt([
         name: 'Usage'
       },
       {
-  name: 'Usage'
+        name: 'Credits'
+      },
+      {
+        name: 'License'
       },
     ]
   },
   {
-    type: 'input',
-    name: 'question4',
-    message: 'Installation:'
-  },
-  {
-    type: 'input',
-    name: 'question5',
-    message: 'Usage:'
-  },
-  {
-    type: 'input',
-    name: 'license',
-    message: 'List any licenses, if any, used:'
+    type: 'list',
+    name: 'contributting',
+    message: 'List of contributors:'
     choices: [
-      new seperator (,)
+      new seperator(),
       {
-
+        name: 'Collaborators, list their GitHub profiles:'
       },
       {
-
+        name: 'Third-party assets, list the creators with links:'
       },
       {
-
+        name: 'Tutorials, list the links:'
       },
     ]
   },
   {
     type: 'input',
-    name: 'question7',
-    message: 'Contributing:'
+    name: 'test',
+    message: 'Write the tests for the application, include examples of how to run them:'
   },
   {
     type: 'input',
-    name: 'question8',
-    message: 'Tests:'
-  },
-  {
-    type: 'input',
-    name: 'question9',
-    message: 'Questions:'
+    name: 'question',
+    message: 'List any remaining questions or comments:'
   }
 ])
   .then(data => {

@@ -5,7 +5,10 @@ const { prompt } = require('inquirer')
 const { writeFile, appendFile} = require ('fs')
 
 
-const writeFileSync = promisify (writeFile)
+//establishing values for promisify
+const writeFilePromise = promisify(writeFile)
+const appendFilePromise = promisify(appendFile)
+
 
 //bring over api code
 let api = require ('./testApi2.js')
