@@ -12,8 +12,8 @@ function generateMarkdown(response, data) {
 ## ${response.Tests}
 ## ${response.Questions}
 ---
-${data.name}
-
+${data.login}
+${data.avatar_url}
 `
 }
 
