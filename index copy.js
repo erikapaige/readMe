@@ -8,14 +8,39 @@ const axios = require('axios')
 //establishing values for promisify
 const appendFileSync = promisify (writeFile)
 
+//creating variables to be called on to generate the ReadMe
+const userProfile =''
 
-//prompt asking user for GitHub username and questions about the project
+//prompt asking user for GitHub username
 prompt([
   {
     type: 'input',
     name: 'userProfile',
     message: 'GitHub Username:'
-  },
+  }
+])
+  .then(userProfile => {
+    console.log(userProfile)
+    //loop over different properties of an object to get to userProfile (key)
+    for (const name in userProfile) {
+      //return the value of data at the userProfile (key)
+      console.log(name[userProfile])
+      //using key data, write axios request for user profile from GitHub
+      axios.get(`https://api.github.com/users/${userProfile[name]}`)
+        //using {} around data to deconstruct the object
+        .then(({ data }) => {
+          //from axios request pull avatar_url
+          console.log(data.avatar_url)
+          //from the axios request pull user's email
+          console.log(data.email)
+        })
+        .catch(err => console.log(err))
+    }
+  })
+  .catch(err => console.log(err))
+
+// //an array of objects with prompts for user information about the project
+prompt([
   {
     type: 'input',
     name: 'title',
@@ -78,38 +103,20 @@ prompt([
     message: 'List any remaining questions or comments:'
   }
 ])
-  .then(userProfile => {
-    console.log(userProfile)
-    //loop over different properties of an object to get to userProfile (key)
-    for (const name in userProfile) {
-      //return the value of data at the userProfile (key)
-      console.log(name[userProfile])
-      //using key data, write axios request for user profile from GitHub
-      axios.get(`https://api.github.com/users/${userProfile[name]}`)
-        //using {} around data to deconstruct the object
-        .then(({ data }) => {
-          //from axios request pull avatar_url
-          console.log(data.avatar_url)
-          //from the axios request pull user's email
-          console.log(data.email)
-        })
-        .catch(err => console.log(err))
-    }
-  })
-  .catch(err => console.log(err))
+
 
 //creating and formatting the readme file
-// function generateMarkdown({ data }) {
-//   return `
-// # **${data.title}**
+function generateMarkdown({ data }) {
+  return `
+# **${data.title}**
 
-// ## ${data.description}
-// ## ${data.tbc}
-// ## ${data.contributting}
-// ## ${data.test}
-// ## ${data.question}
+## ${data.description}
+## ${data.tbc}
+## ${data.contributting}
+## ${data.test}
+## ${data.question}
 
-// ![profilepic](https://avatars1.githubusercontent.com/u/62491401?v=4${userProfile[avatar_url]})
-// `
-// }
+![profilepic](https://avatars1.githubusercontent.com/u/62491401?v=4${userProfile[avatar_url]})
+`
+}
 
