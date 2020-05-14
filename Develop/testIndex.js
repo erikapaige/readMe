@@ -1,19 +1,20 @@
+const { promisfy } = require('util')
 //bring in npm 'inquirer' package, allows for use of prompt
 const { prompt } = require('inquirer')
 //bring in file system
 const { writeFile, appendFile} = require ('fs')
-const { promisfy } = require ('util')
-//bring in npm 'axios' package
-const axios = require('axios')
+
+
+const writeFileSync = promisify (writeFile)
 
 //bring over api code
-// let api = require ('./api')
+let api = require ('./testApi2.js')
 
 
 //array of information looking for
 const questions = ['Project Title:', 'Description:', 'Table of Contents:', 'Installation:', 'Usage:', 'License:', 'Contributing:', 'Tests:', 'Questions:']
 
-//creating empty array for objects from for loop
+//creating empty array with answers from for questions
 let answers = []
 //using for loop to cycle through 'const questions' array
 for (let i = 0; i < questions.length; i++) {
