@@ -5,8 +5,8 @@ const { prompt } = require('inquirer')
 const { writeFile, appendFile } = require('fs')
 
 //establishing values for promisify
-const writeFilePromise = promisify (writeFile)
-const appendFilePromise = promisify (appendFile)
+// const writeFilePromise = promisify (writeFile)
+// const appendFilePromise = promisify (appendFile)
 
 
 //function writeToFile(fileName, data) {
@@ -30,38 +30,42 @@ prompt([
   {
     type: 'list',
     name: 'tbc',
-    message: 'Table of Contents:'
+    message: 'Table of Contents:',
     choices: [
-      new seperator (),
       {
-        name: 'Installation'
+        name: 'Installation',
       },
       {
-        name: 'Usage'
+        name: 'Usage',
       },
       {
-        name: 'Credits'
+        name: 'Credits',
       },
       {
-        name: 'License'
+        name: 'License',
       },
+      {
+        name: 'None where used',
+      }
     ]
   },
   {
     type: 'list',
     name: 'contributting',
-    message: 'List of contributors:'
+    message: 'List of contributors:',
     choices: [
-      new seperator(),
       {
-        name: 'Collaborators, list their GitHub profiles:'
+        name: 'Collaborators, list their GitHub profiles:',
       },
       {
-        name: 'Third-party assets, list the creators with links:'
+        name: 'Third-party assets, list the creators with links:',
       },
       {
-        name: 'Tutorials, list the links:'
+        name: 'Tutorials, list the links:',
       },
+      {
+        name: 'None where used',
+      }
     ]
   },
   {
@@ -75,10 +79,10 @@ prompt([
     message: 'List any remaining questions or comments:'
   }
 ])
-  .then(data => {
-    console.log(data)
-  })
-  .catch(err => console.log(err))
+  // .then(data => {
+  //   console.log(data)
+  // })
+  // .catch(err => console.log(err))
 // }
 
 // function init() {
