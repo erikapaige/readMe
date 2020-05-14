@@ -99,17 +99,17 @@ prompt([
   .catch(err => console.log(err))
 
 //creating and formatting the readme file
-// function generateMarkdown({ data }) {
-//   return `
-// # **${data.title}**
+function generateMarkdown({ data }) {
+  return `
+# **${data.title}**
 
-// ## ${data.description}
-// ## ${data.tbc}
-// ## ${data.contributting}
-// ## ${data.test}
-// ## ${data.question}
+## ${data.description}
+## ${data.tbc}
+## ${data.contributting}
+## ${data.test}
+## ${data.question}
 
-// ![profilepic](https://avatars1.githubusercontent.com/u/62491401?v=4${userProfile[avatar_url]})
-// `
-// }
+![profilepic](https://avatars1.githubusercontent.com/u/62491401?v=4${userProfile[avatar_url]})
+`
+}
 

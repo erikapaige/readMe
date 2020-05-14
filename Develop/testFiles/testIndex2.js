@@ -9,34 +9,46 @@ const { writeFile, appendFile} = require ('fs')
 // const writeFilePromise = promisify(writeFile)
 // const appendFilePromise = promisify(appendFile)
 
-
 //bring over api code
 let api = require ('./testApi2.js')
 
 
 //array of information looking for
-const questions = ['Project Title:', 'Description:', 'Table of Contents:', 'Installation:', 'Usage:', 'License:', 'Contributing:', 'Tests:', 'Questions:']
+// const questions = ['Project Title:', 'Description:', 'Table of Contents:', 'Installation:', 'Usage:', 'License:', 'Contributing:', 'Tests:', 'Questions:']
 
 //creating empty array with answers from for questions
-let answers = []
-//using for loop to cycle through 'const questions' array
-for (let i = 0; i < questions.length; i++) {
-  answers.push({
-    type: 'input',
-    name: questions[i],
-    message: `${questions[i]}`
-  })
-}
+// let answers = []
+// //using for loop to cycle through 'const questions' array
+// for (let i = 0; i < questions.length; i++) {
+//   answers.push({
+//     type: 'input',
+//     name: questions[i],
+//     message: `${questions[i]}`
+//   })
+// }
 
 //prompting user for answer to questions, using inquirer.prompt
-prompt(answers)
-  //log the data
-  .then(data => {
-    console.log(data)
+// prompt(answers)
+//   //log the data
+//   .then(data => {
+//     console.log(data)
 
-  })
-  .catch(err => console.log(err))
+//   })
+//   .catch(err => console.log(err))
 
+// function generateMarkdown({ data }) {
+//   return `
+// # **${data.title}**
+
+// ## ${data.description}
+// ## ${data.tbc}
+// ## ${data.contributting}
+// ## ${data.test}
+// ## ${data.question}
+
+// ![profilepic](https://avatars1.githubusercontent.com/u/62491401?v=4${userProfile[avatar_url]})
+// `
+// }
 
 // function writeToFile(fileName, data) {
 // }

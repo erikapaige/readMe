@@ -3,19 +3,8 @@ const { prompt } = require('inquirer')
 //npm 'axios' package
 const axios = require('axios')
 
-//creating variables to call specific data in api key
-// let userEmail = email () => {
-//   axios.get(`https://api.github.com/users/${userProfile[data.email]}`)
-//     .then(data => {
-//       console.log
-//     })
-//     .catch(err => console.log(err))
-// }
 
 //prompt user for username
-// let user = require ('prompt') 
-//   prompt.start ()
-//   prompt.get
   prompt([
       {
         type: 'input',
@@ -44,4 +33,4 @@ const axios = require('axios')
       .catch(err => console.log(err))
 
 
-// module.exports = api
+module.exports = api
