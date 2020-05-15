@@ -9,18 +9,18 @@ const writeFileSync = promisify(writeFile)
 const axios = require('axios')
 
 //bring over api code
-const api = require('./api.js')
+const api = require('../../api')
 //bring over markdown
-const generateMarkdown = require('./generateMarkdown.js')
+const generateMarkdown = require('../../generateMarkdown')
 
 // array of information looking for
 const questions = ['Title:', 'Description:', 'Installation:', 'Usage:', 'License:', 'Contributing:', 'Tests:', 'Questions:', 'GitHub:']
 
 // creating empty array with answers from for questions
-let response = []
+let answers = []
 //using for loop to cycle through 'const questions' array
 for (let i = 0; i < questions.length; i++) {
-  response.push({
+  answers.push({
     type: 'input',
     name: questions[i],
     message: `${questions[i]}`
@@ -38,16 +38,16 @@ for (let i = 0; i < questions.length; i++) {
 // }
 
 //prompting user for answer to questions, using inquirer.prompt
-prompt(response)
-  //log the information from const questions
+prompt(answers)
+  //log the data
   .then((response) => {
     // console.log(response)
     api.getUser(response.data)
     .then(data => {
-      // console.log(data)
-      writeFileSync("README.md", generateMarkdown(response, data))
-      .then(() => {  
-      })
+      console.log(data)
+      // writeFileSync("README.md", generateMarkdown(response, data))
+      // .then(() => {  
+      // })
     })
       .catch(err => console.log(err))
   })
