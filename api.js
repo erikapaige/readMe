@@ -7,9 +7,9 @@ const axios = require('axios')
 //prompt user for username
 const api = {
   getUser(username) {
-    return axios.get(`https://api.github.com/users/${username}`)
+    return axios.get(`https://api.github.com/users/${username}`)   
   }
 }
       
-//export function to testIndex2
+//export function to index.js
 module.exports = api

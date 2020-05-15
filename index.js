@@ -1,14 +1,17 @@
-const { promisfy } = require('util')
+const { promisify } = require('util')
 //bring in npm 'inquirer' package, allows for use of prompt
 const { prompt } = require('inquirer')
 //bring in file system
 const { writeFile, appendFile } = require('fs')
+// const writeFilePromise = promisify(writeFile)
+const writeFileSync = promisify(writeFile)
+// npm package for AJAX
+const axios = require('axios')
 
 //bring over api code
 const api = require('./api')
 //bring over markdown
 const generateMarkdown = require('./generateMarkdown')
-
 
 // array of information looking for
 const questions = ['Title:', 'Description:', 'Installation:', 'Usage:', 'License:', 'Contributing:', 'Tests:', 'Questions:', 'GitHub:']
@@ -27,32 +30,53 @@ for (let i = 0; i < questions.length; i++) {
 //prompting user for answer to questions, using inquirer.prompt
 prompt(answers)
   //log the data
-  .then(response => {
-    console.log(response)
-    api.getUser(response.login).then(data => {
-        writeFile("README.md", generateMarkdown({response, data}))
+  .then((response) => {
+    // console.log(response)
+    api.getUser(response.data)
+    .then(({ data }) => {
+      writeFileSync("README.md", generateMarkdown(response, data))
+      .then(() => {  
       })
-  .catch(err => console.log(err))
+    })
+      .catch(err => console.log(err))
   })
+  // .then(response => {
+  //   // console.log(response)
+  //   api.getUser(response.data).then(data => {
+  //     writeFile("README.md", generateMarkdown(response, data))
+  //   })
+  //   .catch(err => console.log(err))
+  // })
 
-// writeToFile("README.md", generateMarkdown(response, data)
+// prompt(answers)
+//   //log the data
+//   .then(response => {
+//     // console.log(response)
+//     api.getUser(response.data)
+//       .then(({ data }) => {
+//         writeFile("README.md", generateMarkdown(response, data))
+//           .then(() => {
+//           })
+//       })
+//       .catch(err => console.log(err))
+//   })
 
-  
 
-//   return `
-// # ** ${ response.Title }**
+// function generateMarkdown ({response, data}){
+//   return`
+// # **${response.Title}**
 //     ---
-// ## ${ response.Description }
-// ## ${ response.Installation }
-// ## ${ response.Usage }
-// ## ${ response.License }
-// ## ${ response.Contributing }
-// ## ${ response.Tests }
-// ## ${ response.Questions }
+// ## ${response.Description}
+// ## ${response.Installation}
+// ## ${response.Usage}
+// ## ${response.License}
+// ## ${response.Contributing}
+// ## ${response.Tests}
+// ## ${response.Questions}
 // ---
-//   ${ data.name }
-
-// ![profilepic](https://avatars1.githubusercontent.com/u/62491401?v=4${userProfile[avatar_url]})
-// `
+// ###### ${data.login}
+// ![profilepic](https://avatars1.githubusercontent.com/u/62491401?v=4${data.avatar_url})
+//   `
 // }
+
 

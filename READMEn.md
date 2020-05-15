@@ -5,5 +5,6 @@ This is a ReadMe generator, a user can type in ‘node index.js’ to retrieve t
 Software used to create this generator include: Javascript, Nodejs, NPM Inquirer, and NPM Axios.
 
 ### NOTES ABOUT THE PROCESS
-- In Develop>testFiles, there are 4 different .js files. 'testApi.js' and 'testIndex.js' were the first files I wrote. As the code evolved I created 'testApi2.js' and 'testIndex2.js'. After working on these files; pieces from all 4 documents were moved to the "master" file, index.js
+- In Develop>testFiles, there are several different .js files with the name of test/ index or Api with a number assigned. After working on these files; pieces from all 4 documents were moved to the "master" files: index.js, apis.js, generateMarkdown.js
+- I was unable to have the WriteFile function generate a README.md.
 
